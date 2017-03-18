@@ -8,6 +8,9 @@ import java.util.Scanner;
  * from the home directory:
  *    build: javac src/main/java/org/sreddi/*.java
  *    run:   java -classpath src/main/java/ org.sreddi.Assessment
+ * or
+ *    build: mvn clean install
+ *    run:   java -cp target/sparkcentral-1.0-SNAPSHOT.jar org.sreddi.Assessment
  *
  * OBJECTIVE
  * Your assignment is to write a calculator library. A command- ​ line interface is fine, but don’t spend too much time on it.
@@ -25,15 +28,14 @@ import java.util.Scanner;
  */
 public class Assessment {
 
-    private static final MyCalculator CALCULATOR = new MyCalculator();
-
     public static void main(String[] args) {
+        MyCalculator calculator = new MyCalculator();
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Enter expression (^d to exit) > ");
         while(sc.hasNextLine()) {
             String exp = sc.nextLine().trim();
-            System.out.println(CALCULATOR.evaluate(exp, 0, exp.length()));
+            System.out.println(calculator.evaluate(exp, 0, exp.length()));
             System.out.print("Enter expression > ");
         }
         System.out.println("");
